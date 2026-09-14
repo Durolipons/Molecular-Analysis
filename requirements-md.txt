@@ -1,0 +1,11 @@
+openmm==8.5.1
+pdbfixer==1.12.0
+openmmforcefields==0.15.1
+rdkit==2025.9.1
+xmltodict==1.0.4
+python-constraint==1.4.0
+git+https://github.com/openforcefield/openff-toolkit.git@6e2fc3520f1dce0f4f79e5674446b348ceadeba8
+git+https://github.com/openforcefield/openff-units.git@10ff36a6adbdbbb8f3c797b21d95dac658290306
+git+https://github.com/openforcefield/openff-utilities.git@1bbda21bd64a69c446919b7051e2c4db3a997402
+git+https://github.com/openforcefield/openff-interchange.git@b3807f6264c543811b4d209fedf36cda906ea661
+git+https://github.com/openforcefield/openff-forcefields.git@edd7724103a558328c358a9e35462334c4a45b6f

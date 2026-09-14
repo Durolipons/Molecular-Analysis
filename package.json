@@ -1,0 +1,71 @@
+{
+  "name": "molecular-analysis-tool",
+  "version": "1.0.0",
+  "description": "A molecular analysis tool for searching molecular databases like AlphaFold, PDB, KEGG, and PubChem",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "set MD_BACKEND_EXECUTABLE=none&& node server.js",
+    "start:web": "node server.js",
+    "start:desktop": "electron .",
+    "build:backend": "py -3 -m PyInstaller .\\backend\\md-pipeline.spec --noconfirm --clean",
+    "pack:desktop": "electron-builder --dir",
+    "dist:win": "electron-builder --win nsis",
+    "dist:win:portable": "electron-builder --win portable",
+    "dist:win:functional": "npm run build:backend && npm run dist:win",
+    "dist:win:portable:functional": "npm run build:backend && npm run dist:win:portable",
+    "start:static": "live-server --port=8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "molecular",
+    "analysis",
+    "alphafold",
+    "pdb",
+    "kegg",
+    "pubchem",
+    "bioinformatics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "live-server": "^1.2.2"
+  },
+  "build": {
+    "appId": "com.durolipons.molecularanalysis",
+    "productName": "Molecular Analysis Workspace",
+    "asar": false,
+    "directories": {
+      "output": "dist/desktop",
+      "buildResources": "assets"
+    },
+    "files": [
+      "assets/**/*",
+      "backend/**/*",
+      "css/**/*",
+      "dist/md-pipeline/**/*",
+      "electron/**/*",
+      "js/**/*",
+      "index.html",
+      "review.html",
+      "server.js",
+      "requirements-md.txt",
+      "README.md"
+    ],
+    "win": {
+      "icon": "assets/app-icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "installerIcon": "assets/app-icon.ico",
+      "uninstallerIcon": "assets/app-icon.ico",
+      "installerHeaderIcon": "assets/app-icon.ico"
+    }
+  }
+}
